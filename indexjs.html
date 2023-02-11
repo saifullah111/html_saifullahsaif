@@ -59,6 +59,34 @@
             </script>
             <button onclick="alert('Hi, welcome')">Click Me</button>
         </p>
+        <p>
+            <form>
+                <label for="userNumber">Enter a number between 1 and 100:</label>
+                <input type="number" id="userNumber" name="userNumber" min="1" max="100">
+                <input type="submit" value="Submit" style="background-color: blue; color: white;">
+              </form>
+              <h1 id="luckyNumber"></h1>
+              <script>
+                function isPrime(num) {
+                  if (num <= 1) return false;
+                  for (let i = 2; i <= Math.sqrt(num); i++) {
+                    if (num % i === 0) return false;
+                  }
+                  return true;
+                }
+          
+                document.querySelector('form').addEventListener('submit', function(event) {
+                  event.preventDefault();
+                  const userNumber = parseInt(document.getElementById('userNumber').value);
+          
+                  let primeCount = 0;
+                  for (let i = 2; i <= userNumber; i++) {
+                    if (isPrime(i)) primeCount++;
+                  }
+                  document.getElementById('luckyNumber').textContent = `Your lucky number is ${primeCount} - the number of prime numbers between 0 and ${userNumber}.`;
+                });
+              </script>
+        </p>
 
         <h1><center>Saifullah Saif</center></h1>
         <h1>Profile</h1>
